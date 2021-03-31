@@ -19,15 +19,20 @@
         <input type="text" id="RAP_MOTIFAUTRE" placeholder="Autre motif" name="RAP_MOTIFAUTRE" disabled="disabled" tabindex="85"/><br />
         <label for="RAP_BILAN">BILAN :</label><br />
         <textarea rows="5" cols="50" id="RAP_BILAN" name="RAP_BILAN" tabindex="90"></textarea>
-        <h3> Eléments présentés </h3>
-        <label for="PROD1">PRODUIT 1 : </label><select name="PROD1" tabindex="100"></select><br />
-        <label for="PROD2">PRODUIT 2 : </label><select name="PROD2" tabindex="110"></select><br />
+        <h3>Produits présentés</h3>
+        <div id="produits">
+            <div id="produit1">
+                <label id="lab1" for="PROD1">PRODUIT 1 : </label>
+        <?php echo formSelectDepuisTab2D(null, 'PROD1', 'PROD1', getListeMedicamentsTab(), 0, 100); ?>
+                <input type="button" id="butppres" onclick="ajouterProdPres()" value="+" class="zone" />
+            </div>
+        </div>
         <?php echo formInputCheckBox(false, 'DOCUMENTATION OFFERTE', 'RAP_DOC', 'RAP_DOC', false, 120); ?>
         <h3>Echanitllons</h3>
         <div id="lignes">
             <label>Produit : </label>
             <select name="PRA_ECH1" tabindex="130"><option>Produits</option></select><label> Quantité : </label><input type="text" name="PRA_QTE1" size="2" class="zone"/>
-            <input type="button" id="but1" value="+" onclick="ajoutLigne(1);" class="zone" />			
+            <input type="button" id="butpech" value="+" onclick="ajoutLigne(1);" class="zone" />
         </div>
         <?php echo formInputCheckBox(false, 'SAISIE_DEFINITIVE', 'RAP_LOCK', 'RAP_LOCK', false, 200); ?><br />
         <?php echo formBoutonReset('frm_reset', 'frm_reset', 'Annuler', 900); ?>

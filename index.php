@@ -14,7 +14,7 @@ $jsFichier = ['JavaScript/crVisite.js'];
 
 if (isset($_REQUEST['action'])) {
     $action = $_REQUEST['action'];
-    if (estSessionUtilisateurOuverte() && $_REQUEST['action'] != AUTH_FRM) {
+    if (estSessionUtilisateurOuverte() && $_REQUEST['action'] != AUTH_FRM && $_REQUEST['action'] != AUTH_LOGOUT) {
         require_once './Include/entete.inc.php';
     }
     else

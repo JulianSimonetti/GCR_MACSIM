@@ -63,6 +63,12 @@ function getListePraticiensTab() {
     return $tab;
 }
 
+function getListeMedicamentsTab() {
+    $res = getTousMedicaments();
+    $tab = $res->fetchAll(PDO::FETCH_NUM);
+    return $tab;
+}
+
 function getListeFamilles() {
     try {
         //$cx = SGBDConnect();
@@ -83,6 +89,20 @@ function getListeMedicaments($famille) {
         $requete = 'SELECT MED_CODE, MED_NOM '
                 . 'FROM MEDICAMENT '
                 . 'WHERE MED_FAMILLE = \'' . $famille . '\' '
+                . 'ORDER BY MED_NOM';
+        $resultat = SGBDConnect()->query($requete);
+    } catch (PDOException $e) {
+        echo 'Erreur !: ' . $e->getMessage() . '<br />';
+        exit();
+    }
+    return $resultat;
+}
+
+function getTousMedicaments() {
+    try {
+        //$cx = SGBDConnect();
+        $requete = 'SELECT MED_CODE, MED_NOM '
+                . 'FROM MEDICAMENT '
                 . 'ORDER BY MED_NOM';
         $resultat = SGBDConnect()->query($requete);
     } catch (PDOException $e) {
